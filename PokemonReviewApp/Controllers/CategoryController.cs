@@ -48,7 +48,7 @@ namespace PokemonReviewApp.Controllers
             return Ok(category);
         }
 
-        [HttpGet("pokemon/{categoryId")]
+        [HttpGet("pokemon/{categoryId}")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Category>))]
         [ProducesResponseType(400)]
         public IActionResult GetPokemonByCategoryId(int categoryId)
@@ -56,7 +56,7 @@ namespace PokemonReviewApp.Controllers
             var pokemons = _mapper.Map<List<PokemonDto>>(
                 _categoryRepository.GetPokemonByCategory(categoryId));
 
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest();
 
             return Ok(pokemons);

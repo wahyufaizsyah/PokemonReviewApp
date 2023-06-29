@@ -23,7 +23,7 @@ namespace PokemonReviewApp.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<Owner>))]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Pokemon>))]
         public IActionResult GetPokemons()
         {
             var pokemons = _mapper.Map<List<PokemonDto>>(_pokemonRepository.GetPokemons());
@@ -35,7 +35,7 @@ namespace PokemonReviewApp.Controllers
         }
 
         [HttpGet("{pokeId}")]
-        [ProducesResponseType(200, Type = typeof(Owner))]
+        [ProducesResponseType(200, Type = typeof(Pokemon))]
         [ProducesResponseType(400)]
         public IActionResult GetPokemon(int pokeId) 
         { 
@@ -51,19 +51,19 @@ namespace PokemonReviewApp.Controllers
         }
 
         [HttpGet("{pokeId}/rating")]
-        [ProducesResponseType(200, Type = typeof(Decimal))]
+        [ProducesResponseType(200, Type = typeof(Pokemon))]
         [ProducesResponseType(400)] 
         public IActionResult GetPokemonRating(int pokeId)
         {
             if(!_pokemonRepository.PokemonExists(pokeId))
                 return NotFound();
 
-            var rating = _pokemonRepository.GetPokemonRating(pokeId);
+            var pokemons = _pokemonRepository.GetPokemonRating(pokeId);
 
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            return Ok(rating);
+            return Ok(pokemons);
 
         }
 
