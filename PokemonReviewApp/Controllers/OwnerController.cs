@@ -61,7 +61,7 @@ namespace PokemonReviewApp.Controllers
             var owner = _mapper.Map<List<PokemonDto>>(
                 _ownerRepository.GetPokemonByOwner(ownerId));
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             return Ok(owner);

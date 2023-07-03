@@ -19,7 +19,7 @@ namespace PokemonReviewApp.Repository
         }
         public Reviewer GetReviewer(int reviewerId)
         {
-            return _context.Reviewers.Where(r => r.Id == reviewerId).Include(equals => equals.Reviews).FirstOrDefault();
+            return _context.Reviewers.Where(r => r.Id == reviewerId).Include(e => e.Reviews).FirstOrDefault();
         }
 
         public ICollection<Reviewer> GetReviewers()

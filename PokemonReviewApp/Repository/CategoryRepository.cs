@@ -7,7 +7,9 @@ namespace PokemonReviewApp.Repository
 {
     public class CategoryRepository : ICategoryRepository
     {
-        private readonly DataContext _context;
+      /*private readonly DataContext _context;*/
+
+        private DataContext _context;
         public CategoryRepository(DataContext context)
         {
             _context = context;
@@ -29,7 +31,8 @@ namespace PokemonReviewApp.Repository
 
         public ICollection<Pokemon> GetPokemonByCategory(int categoryId)
         {
-            return _context.PokemonCategories.Where(e => e.CategoryId == categoryId).Select(c => c.Pokemon).ToList();
+            return _context.PokemonCategories.Where(
+                e => e.CategoryId == categoryId).Select(c => c.Pokemon).ToList();
         }
     }
 }
