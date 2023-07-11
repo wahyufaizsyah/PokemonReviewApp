@@ -9,14 +9,12 @@ namespace PokemonReviewApp.Repository
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
+
         public CountryRepository(DataContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
-
-        public DataContext Context { get; }
-        public IMapper Mapper { get; }
 
         public bool CountryExists(int id)
         {
@@ -30,7 +28,7 @@ namespace PokemonReviewApp.Repository
 
         public Country GetCountry(int id)
         {
-            return _context.Countries.Where(c  => c.Id == id).FirstOrDefault();
+            return _context.Countries.Where(c => c.Id == id).FirstOrDefault();
         }
 
         public Country GetCountryByOwner(int ownerId)

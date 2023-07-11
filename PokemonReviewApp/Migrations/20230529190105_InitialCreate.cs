@@ -5,10 +5,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PokemonReviewApp.Migrations
 {
-    /// <inheritdoc />
     public partial class InitialCreate : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -88,7 +86,7 @@ namespace PokemonReviewApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PokemonCategory",
+                name: "PokemonCategories",
                 columns: table => new
                 {
                     PokemonId = table.Column<int>(type: "int", nullable: false),
@@ -96,15 +94,15 @@ namespace PokemonReviewApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PokemonCategory", x => new { x.PokemonId, x.CategoryId });
+                    table.PrimaryKey("PK_PokemonCategories", x => new { x.PokemonId, x.CategoryId });
                     table.ForeignKey(
-                        name: "FK_PokemonCategory_Categories_CategoryId",
+                        name: "FK_PokemonCategories_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PokemonCategory_Pokemon_PokemonId",
+                        name: "FK_PokemonCategories_Pokemon_PokemonId",
                         column: x => x.PokemonId,
                         principalTable: "Pokemon",
                         principalColumn: "Id",
@@ -170,8 +168,8 @@ namespace PokemonReviewApp.Migrations
                 column: "CountryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PokemonCategory_CategoryId",
-                table: "PokemonCategory",
+                name: "IX_PokemonCategories_CategoryId",
+                table: "PokemonCategories",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
@@ -190,11 +188,10 @@ namespace PokemonReviewApp.Migrations
                 column: "ReviewerId");
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "PokemonCategory");
+                name: "PokemonCategories");
 
             migrationBuilder.DropTable(
                 name: "PokemonOwners");

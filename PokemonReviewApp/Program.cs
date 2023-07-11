@@ -44,6 +44,9 @@ void SeedData(IHost app)
     }
 }
 
+
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -54,6 +57,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
 /*app.UseRouting();
 app.UseEndpoints(endpoints => {
     endpoints.MapControllers();
